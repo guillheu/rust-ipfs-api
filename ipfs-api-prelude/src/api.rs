@@ -2022,6 +2022,14 @@ pub trait IpfsApi: Backend {
     ) -> Result<response::PinRemoteLsResponse, Self::Error> {
         self.request(request::PinRemoteLs {service, name, cid, status}, None).await
     }
+    async fn pin_remote_add(
+        &self,
+        key: &str,
+        recursive: Option<bool>,
+        progress: Option<bool>,
+    ) -> Result<response::PinRemoteAddResponse, Self::Error> {
+        self.request(request::PinRemoteAdd {key, recursive, progress}, None).await
+    }
     
 
 

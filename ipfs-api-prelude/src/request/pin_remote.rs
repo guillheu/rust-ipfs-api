@@ -21,3 +21,15 @@ pub struct PinRemoteLs<'a> {
 impl<'a> ApiRequest for PinRemoteLs<'a> {
     const PATH: &'static str = "/pin/remote/ls";
 }
+
+#[derive(Serialize)]
+pub struct PinRemoteAdd<'a> {
+    #[serde(rename = "arg")]
+    pub key: &'a str,
+    pub recursive: Option<bool>,
+    pub progress: Option<bool>,
+}
+
+impl<'a> ApiRequest for PinRemoteAdd<'a> {
+    const PATH: &'static str = "/pin/remote/add";
+}

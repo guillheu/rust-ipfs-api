@@ -6,6 +6,7 @@
 // copied, modified, or distributed except according to those terms.
 //
 
+use crate::response::serde;
 use crate::serde::Deserialize;
 
 #[derive(Debug, Deserialize)]
@@ -14,4 +15,12 @@ pub struct PinRemoteLsResponse {
     pub cid: String,
     pub name: String,
     pub status: String,
+}
+
+#[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
+pub struct PinRemoteAddResponse {
+    #[serde(deserialize_with = "serde::deserialize_vec")]
+    pub pins: Vec<String>,
+    pub progress: Option<i32>,
 }
