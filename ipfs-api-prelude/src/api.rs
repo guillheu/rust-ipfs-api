@@ -2015,7 +2015,7 @@ pub trait IpfsApi: Backend {
 
     async fn pin_remote_ls(
         &self,
-        service: &str,
+        service: Option<&str>,
         name: Option<&str>,
         cid: Option<Vec<&str>>,
         status: Option<Vec<&str>>,

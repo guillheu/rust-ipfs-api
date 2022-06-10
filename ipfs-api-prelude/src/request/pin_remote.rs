@@ -12,7 +12,7 @@ use serde::Serialize;
 
 #[derive(Serialize)]
 pub struct PinRemoteLs<'a> {
-    pub service: &'a str,
+    pub service: Option<&'a str>,
     pub name: Option<&'a str>,
     pub cid: Option<Vec<&'a str>>,
     pub status: Option<Vec<&'a str>>,
