@@ -2004,6 +2004,36 @@ pub trait IpfsApi: Backend {
 
     // TODO /pin/verify
 
+
+
+
+
+
+
+
+
+
+    async fn pin_remote_ls(
+        &self,
+        service: &str,
+        name: Option<&str>,
+        cid: Option<Vec<&str>>,
+        status: Option<Vec<&str>>,
+    ) -> Result<response::PinRemoteLsResponse, Self::Error> {
+        self.request(request::PinRemoteLs {service, name, cid, status}, None).await;
+    }
+    
+
+
+
+
+
+
+
+
+
+
+
     /// Pings a peer.
     ///
     /// ```no_run
@@ -2013,7 +2043,7 @@ pub trait IpfsApi: Backend {
     /// let res = client.ping("QmSoLV4Bbm51jM9C4gDYZQ9Cy3U6aXMJDAbzgu2fzaDs64", None);
     /// let res = client.ping("QmSoLV4Bbm51jM9C4gDYZQ9Cy3U6aXMJDAbzgu2fzaDs64", Some(15));
     /// ```
-    ///
+ 
     fn ping(
         &self,
         peer: &str,
