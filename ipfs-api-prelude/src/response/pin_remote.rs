@@ -6,9 +6,7 @@
 // copied, modified, or distributed except according to those terms.
 //
 
-use crate::response::serde;
 use crate::serde::Deserialize;
-use std::collections::HashMap;
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]

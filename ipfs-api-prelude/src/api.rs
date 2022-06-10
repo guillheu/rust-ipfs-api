@@ -2020,7 +2020,7 @@ pub trait IpfsApi: Backend {
         cid: Option<Vec<&str>>,
         status: Option<Vec<&str>>,
     ) -> Result<response::PinRemoteLsResponse, Self::Error> {
-        self.request(request::PinRemoteLs {service, name, cid, status}, None).await;
+        self.request(request::PinRemoteLs {service, name, cid, status}, None).await
     }
     
 

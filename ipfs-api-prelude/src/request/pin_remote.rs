@@ -12,10 +12,10 @@ use serde::Serialize;
 
 #[derive(Serialize)]
 pub struct PinRemoteLs<'a> {
-    service: &'a str,
-    name: Option<&'a str>,
-    cid: Option<Vec<&'a str>>,
-    status: Option<Vec<&'a str>>,
+    pub service: &'a str,
+    pub name: Option<&'a str>,
+    pub cid: Option<Vec<&'a str>>,
+    pub status: Option<Vec<&'a str>>,
 }
 
 impl<'a> ApiRequest for PinRemoteLs<'a> {
