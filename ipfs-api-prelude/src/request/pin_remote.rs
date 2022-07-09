@@ -12,7 +12,7 @@ use serde::Serialize;
 
 #[derive(Serialize)]
 pub struct PinRemoteLs<'a> {
-    pub service: Option<&'a str>,
+    pub service: &'a str,
     pub name: Option<&'a str>,
     pub cid: Option<Vec<&'a str>>,
     pub status: Option<Vec<&'a str>>,
@@ -26,10 +26,22 @@ impl<'a> ApiRequest for PinRemoteLs<'a> {
 pub struct PinRemoteAdd<'a> {
     #[serde(rename = "arg")]
     pub key: &'a str,
-    pub recursive: Option<bool>,
-    pub progress: Option<bool>,
+    pub service: &'a str,
+    pub name: Option<String>,
+    pub background: Option<bool>,
 }
 
 impl<'a> ApiRequest for PinRemoteAdd<'a> {
     const PATH: &'static str = "/pin/remote/add";
+}
+
+
+
+#[derive(Serialize)]
+pub struct PinRemoteServiceLs {
+    pub stat: Option<bool>,
+}
+
+impl<'a> ApiRequest for PinRemoteServiceLs {
+    const PATH: &'static str = "/pin/remote/service/ls";
 }

@@ -2015,25 +2015,34 @@ pub trait IpfsApi: Backend {
 
     async fn pin_remote_ls(
         &self,
-        service: Option<&str>,
+        service: &str,
         name: Option<&str>,
         cid: Option<Vec<&str>>,
         status: Option<Vec<&str>>,
-    ) -> Result<response::PinRemoteLsResponse, Self::Error> {
-        self.request(request::PinRemoteLs {service, name, cid, status}, None).await
+    ) -> Result<String, Self::Error> {
+        self.request_string(request::PinRemoteLs {service, name, cid, status}, None).await
     }
+
     async fn pin_remote_add(
         &self,
         key: &str,
-        recursive: Option<bool>,
-        progress: Option<bool>,
+        service: &str,
+        name: Option<String>,
+        background: Option<bool>,
     ) -> Result<response::PinRemoteAddResponse, Self::Error> {
-        self.request(request::PinRemoteAdd {key, recursive, progress}, None).await
+        self.request(request::PinRemoteAdd {key, service, name, background}, None).await
     }
     
 
 
 
+
+    async fn pin_remote_service_ls(
+        &self,
+        stat: Option<bool>,
+    ) -> Result<response::PinRemoteServiceLsResponse, Self::Error> {
+        self.request(request::PinRemoteServiceLs {stat}, None).await
+    }
 
 
 
