@@ -27,7 +27,7 @@ pub struct PinRemoteAdd<'a> {
     #[serde(rename = "arg")]
     pub key: &'a str,
     pub service: &'a str,
-    pub name: Option<String>,
+    pub name: Option<&'a str>,
     pub background: Option<bool>,
 }
 

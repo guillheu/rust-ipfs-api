@@ -2027,7 +2027,7 @@ pub trait IpfsApi: Backend {
         &self,
         key: &str,
         service: &str,
-        name: Option<String>,
+        name: Option<&str>,
         background: Option<bool>,
     ) -> Result<response::PinRemoteAddResponse, Self::Error> {
         self.request(request::PinRemoteAdd {key, service, name, background}, None).await
